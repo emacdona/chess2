@@ -17,7 +17,8 @@ using namespace std;
 int main(int argc, char** argv) {
    Board* board = new Board();
    
-   cout << "Hello World" << endl;
+   cout << "Number of squares constructed: "
+        << board->numberOfSquaresConstructed << endl;
    
    delete(board);
    

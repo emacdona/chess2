@@ -11,13 +11,24 @@
 using namespace std;
 
 Square::Square() {
+#ifdef DEBUG
    cout << "Constructing Square" << endl;
+#endif
 }
 
 Square::Square(const Square& orig) {
 }
 
 Square::~Square() {
+#ifdef DEBUG
    cout << "Destructing Square" << endl;
+#endif
 }
 
+void Square::setPiece(Piece p) {
+   piece = p;
+}
+
+Piece Square::getPiece() {
+   return piece;
+}

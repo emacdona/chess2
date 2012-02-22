@@ -8,6 +8,8 @@
 #ifndef SQUARE_H
 #define	SQUARE_H
 
+#include "Piece.h"
+
 namespace chess {
 namespace board{
 
@@ -16,8 +18,16 @@ public:
    Square();
    Square(const Square& orig);
    virtual ~Square();
-private:
+   
+   void setPiece(Piece p);
+   Piece getPiece();
 
+   //Square *n, *ne, *e, *se, *s, *sw, *w, *nw;
+   
+   enum direction { n, ne, e, se, s, sw, w, nw };
+   
+private:
+   Piece piece;
 };
 
 }}

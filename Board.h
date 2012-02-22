@@ -10,6 +10,7 @@
 
 #include <vector>
 #include "Square.h"
+#include "Piece.h"
 
 namespace chess {
 namespace board {
@@ -20,8 +21,10 @@ public:
    Board();
    Board(const Board& orig);
    virtual ~Board();
+   unsigned int numberOfSquaresConstructed;
 private:
    vector<vector<Square*>* > board;
+   Piece piece;
 };
 
 }}
