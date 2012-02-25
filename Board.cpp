@@ -23,9 +23,7 @@ Board::Board() {
          pieces[i].push_back(Square(i,j));
       }
    }
-   
-   strstream msg;
-   
+      
    //Everything is constructed, now let's link neighbors. This could have
    //been done during Square construction, but it's clearer to do it separately.
    for(int i=0; i<ROWS; i++) {
