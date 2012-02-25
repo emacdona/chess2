@@ -22,7 +22,7 @@ public:
    Board(const Board& orig);
    virtual ~Board();
 private:
-   vector<vector<Square> > board;
+   vector<vector<Square> > pieces;
 };
 
 }}
