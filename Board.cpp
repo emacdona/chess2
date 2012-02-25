@@ -9,7 +9,6 @@
 #include "Piece.h"
 #include <iostream>
 #include <utility>
-#include <strstream>
 
 using namespace std;
 
