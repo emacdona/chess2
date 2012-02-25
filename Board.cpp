@@ -6,20 +6,56 @@
  */
 
 #include "Board.h"
+#include "Piece.h"
 #include <iostream>
+#include <utility>
+#include <strstream>
 
 using namespace std;
 
+static const int ROWS = 2;
+static const int COLS = 2;
+
 Board::Board() {
-   numberOfSquaresConstructed = 0;
-#ifdef DEBUG
-   cout << "Constructing Board" << endl;
-#endif
-   for(int i=0; i<8; i++) {
-      board.push_back(new vector<Square*>());
-      for(int j=0; j<8; j++) {
-         board[i]->push_back(new Square());
-         numberOfSquaresConstructed++;
+   for(int i=0; i<ROWS; i++) {
+      board.push_back(vector<Square>());
+      for(int j=0; j<COLS; j++) {
+         Square s;
+         board[i].push_back(s);
+      }
+   }
+   
+   strstream msg;
+   
+   //Everything is constructed, now let's link neighbors. This could have
+   //been done during Square construction, but it's clearer to do it separately.
+   for(int i=0; i<ROWS; i++) {
+      for(int j=0; j<COLS; j++) {
+      
+         if(i>0)
+            board[i][j].neighbors.insert(make_pair(N, &board[i-1][j]));
+         
+         if(j>0)
+            board[i][j].neighbors.insert(make_pair(W, &board[i][j-1]));
+         
+         if(i != ROWS+1)
+            board[i][j].neighbors.insert(make_pair(S, &board[i+1][j]));
+         
+         if(j != COLS+1)
+            board[i][j].neighbors.insert(make_pair(E, &board[i][j+1]));
+         
+         if(i>0 && j>0)
+            board[i][j].neighbors.insert(make_pair(NW, &board[i-1][j-1]));
+         
+         if(i != ROWS+1 && j>0)
+            board[i][j].neighbors.insert(make_pair(SW, &board[i+1][j-1]));
+         
+         if(i>0 && j != COLS+1)
+            board[i][j].neighbors.insert(make_pair(NE, &board[i-1][j+1]));
+         
+         if(i != ROWS+1 && j != COLS+1)
+            board[i][j].neighbors.insert(make_pair(SE, &board[i+1][j+1]));
+         
       }
    }
 }
@@ -28,17 +64,5 @@ Board::Board(const Board& orig) {
 }
 
 Board::~Board() {
-#ifdef DEBUG
-   cout << "Destructing Board" << endl;
-#endif
-   vector<vector<Square*>* >::iterator i;
-   vector<Square*>::iterator j;
-
-   for( i = board.begin(); i != board.end(); i++ ) {
-      for( j = (*i)->begin(); j != (*i)->end(); j++ ) {
-         delete(*j);
-      }
-      delete(*i);
-   }
 }
 

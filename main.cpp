@@ -15,12 +15,16 @@ using namespace std;
  * 
  */
 int main(int argc, char** argv) {
-   Board* board = new Board();
+   Board board = Board();
    
-   cout << "Number of squares constructed: "
-        << board->numberOfSquaresConstructed << endl;
+   cout << "Times Square constructor called: "
+        << Square::timesConstructorCalled << endl;
    
-   delete(board);
+   cout << "Times Square copy constructor called: "
+        << Square::timesCopyConstructorCalled << endl;
+   
+   cout << "Times Square destructor called: "
+        << Square::timesDestructorCalled << endl;
    
    return 0;
 }

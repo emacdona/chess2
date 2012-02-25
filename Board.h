@@ -21,9 +21,8 @@ public:
    Board();
    Board(const Board& orig);
    virtual ~Board();
-   unsigned int numberOfSquaresConstructed;
 private:
-   vector<vector<Square*>* > board;
+   vector<vector<Square> > board;
    Piece piece;
 };
 

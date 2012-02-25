@@ -8,11 +8,16 @@
 #ifndef SQUARE_H
 #define	SQUARE_H
 
+#include<map>
 #include "Piece.h"
+
+using namespace std;
 
 namespace chess {
 namespace board{
 
+enum direction { N, NE, E, SE, S, SW, W, NW };
+      
 class Square {
 public:
    Square();
@@ -22,9 +27,11 @@ public:
    void setPiece(Piece p);
    Piece getPiece();
 
-   //Square *n, *ne, *e, *se, *s, *sw, *w, *nw;
+   map<direction, Square*> neighbors;
    
-   enum direction { n, ne, e, se, s, sw, w, nw };
+   static unsigned int timesConstructorCalled;
+   static unsigned int timesCopyConstructorCalled;
+   static unsigned int timesDestructorCalled;
    
 private:
    Piece piece;
