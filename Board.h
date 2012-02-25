@@ -23,7 +23,6 @@ public:
    virtual ~Board();
 private:
    vector<vector<Square> > board;
-   Piece piece;
 };
 
 }}

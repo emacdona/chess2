@@ -16,7 +16,8 @@ using namespace std;
  */
 int main(int argc, char** argv) {
    Board board = Board();
-   
+
+      
    cout << "Times Square constructor called: "
         << Square::timesConstructorCalled << endl;
    

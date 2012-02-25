@@ -13,15 +13,14 @@
 
 using namespace std;
 
-static const int ROWS = 2;
-static const int COLS = 2;
+static const int ROWS = 8;
+static const int COLS = 8;
 
 Board::Board() {
    for(int i=0; i<ROWS; i++) {
       board.push_back(vector<Square>());
       for(int j=0; j<COLS; j++) {
-         Square s;
-         board[i].push_back(s);
+         board[i].push_back(Square(i,j));
       }
    }
    
@@ -38,22 +37,22 @@ Board::Board() {
          if(j>0)
             board[i][j].neighbors.insert(make_pair(W, &board[i][j-1]));
          
-         if(i != ROWS+1)
+         if(i != ROWS-1)
             board[i][j].neighbors.insert(make_pair(S, &board[i+1][j]));
          
-         if(j != COLS+1)
+         if(j != COLS-1)
             board[i][j].neighbors.insert(make_pair(E, &board[i][j+1]));
          
          if(i>0 && j>0)
             board[i][j].neighbors.insert(make_pair(NW, &board[i-1][j-1]));
          
-         if(i != ROWS+1 && j>0)
+         if(i != ROWS-1 && j>0)
             board[i][j].neighbors.insert(make_pair(SW, &board[i+1][j-1]));
          
-         if(i>0 && j != COLS+1)
+         if(i>0 && j != COLS-1)
             board[i][j].neighbors.insert(make_pair(NE, &board[i-1][j+1]));
          
-         if(i != ROWS+1 && j != COLS+1)
+         if(i != ROWS-1 && j != COLS-1)
             board[i][j].neighbors.insert(make_pair(SE, &board[i+1][j+1]));
          
       }
@@ -64,5 +63,8 @@ Board::Board(const Board& orig) {
 }
 
 Board::~Board() {
+#ifdef _DEBUG
+   cout << "Calling ~Board()" << endl;
+#endif
 }
 

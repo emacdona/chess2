@@ -6,8 +6,13 @@
  */
 
 #include "Piece.h"
+#include <iostream>
+
+using namespace std;
 
 Piece::Piece() {
+   moved = false;
+   cout << "Piece() called" << endl;
 }
 
 Piece::Piece(const Piece& orig) {
