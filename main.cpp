@@ -19,7 +19,7 @@ int myMain(int argc, char** argv);
 int main(int argc, char** argv) {
 
    int retVal = myMain(argc, argv);
-      
+   
    cout << "Times Square constructor called: "
         << Square::timesConstructorCalled << endl;
    
@@ -34,6 +34,10 @@ int main(int argc, char** argv) {
 
 int myMain(int argc, char** argv) {
    Board board = Board();
-      
+   
+   cout << endl << board.asciiRender() << endl;
+     
+   cout << board.pieces[1][1].neighbors[S]->coordinates.second << endl;
+           
    return 0;
 }

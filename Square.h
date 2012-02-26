@@ -36,11 +36,13 @@ public:
    static unsigned int timesCopyConstructorCalled;
    static unsigned int timesDestructorCalled;
    
+   string asciiRender();
+   
    bool imACopy;
+   pair<unsigned int, unsigned int> coordinates;
    
 private:
    Piece* piece;
-   pair<unsigned int, unsigned int> coordinates;
 };
 
 }}

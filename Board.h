@@ -9,6 +9,7 @@
 #define	BOARD_H
 
 #include <vector>
+#include <string>
 #include "Square.h"
 #include "Piece.h"
 
@@ -21,8 +22,13 @@ public:
    Board();
    Board(const Board& orig);
    virtual ~Board();
-private:
+   
+   string asciiRender();
+   
    vector<vector<Square> > pieces;
+   
+private:
+
 };
 
 }}

@@ -7,6 +7,8 @@
 
 #include "Square.h"
 #include <iostream>
+#include <string>
+#include <sstream>
 
 using namespace std;
 
@@ -34,6 +36,7 @@ Square::Square(pair<unsigned int,unsigned int> p) {
 Square::Square(const Square& orig) {
    imACopy = true;
    timesCopyConstructorCalled++;
+   coordinates = orig.coordinates;
 }
 
 Square::~Square() {
@@ -54,4 +57,12 @@ void Square::setPiece(Piece* p) {
 
 Piece* Square::getPiece() {
    return piece;
+}
+
+string Square::asciiRender() {
+   ostringstream s;
+   
+   s << "(" << coordinates.first << ", " << coordinates.second << ")";
+   
+   return s.str();
 }

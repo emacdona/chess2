@@ -8,8 +8,12 @@
 #ifndef PIECE_H
 #define	PIECE_H
 
+#include <string>
+
 namespace chess {
 namespace piece {
+   
+using namespace std;
    
 class Piece {
    public:

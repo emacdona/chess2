@@ -8,6 +8,7 @@
 #include "Board.h"
 #include "Piece.h"
 #include <iostream>
+#include <sstream>
 #include <utility>
 
 using namespace std;
@@ -26,31 +27,30 @@ Board::Board() {
    //Everything is constructed, now let's link neighbors. This could have
    //been done during Square construction, but it's clearer to do it separately.
    for(int i=0; i<ROWS; i++) {
-      for(int j=0; j<COLS; j++) {
-      
+      for(int j=0; j<COLS; j++) {  
          if(i>0)
-            pieces[i][j].neighbors.insert(make_pair(N, &pieces[i-1][j]));
+            pieces[i][j].neighbors[N] = &pieces[i-1][j];
          
          if(j>0)
-            pieces[i][j].neighbors.insert(make_pair(W, &pieces[i][j-1]));
+            pieces[i][j].neighbors[W] = &pieces[i][j-1];
          
          if(i != ROWS-1)
-            pieces[i][j].neighbors.insert(make_pair(S, &pieces[i+1][j]));
+            pieces[i][j].neighbors[S] = &pieces[i+1][j];
          
          if(j != COLS-1)
-            pieces[i][j].neighbors.insert(make_pair(E, &pieces[i][j+1]));
+            pieces[i][j].neighbors[E] = &pieces[i][j+1];
          
          if(i>0 && j>0)
-            pieces[i][j].neighbors.insert(make_pair(NW, &pieces[i-1][j-1]));
+            pieces[i][j].neighbors[NW] = &pieces[i-1][j-1];
          
          if(i != ROWS-1 && j>0)
-            pieces[i][j].neighbors.insert(make_pair(SW, &pieces[i+1][j-1]));
+            pieces[i][j].neighbors[SW] = &pieces[i+1][j-1];
          
          if(i>0 && j != COLS-1)
-            pieces[i][j].neighbors.insert(make_pair(NE, &pieces[i-1][j+1]));
+            pieces[i][j].neighbors[NE] = &pieces[i-1][j+1];
          
          if(i != ROWS-1 && j != COLS-1)
-            pieces[i][j].neighbors.insert(make_pair(SE, &pieces[i+1][j+1]));
+            pieces[i][j].neighbors[SE] = &pieces[i+1][j+1];
          
       }
    }
@@ -65,3 +65,15 @@ Board::~Board() {
 #endif
 }
 
+string Board::asciiRender() {
+   ostringstream s;
+   
+   for(int i=0; i<ROWS; i++) {
+      for(int j=0; j<COLS; j++) {
+         s << "| " << pieces[i][j].asciiRender() << " ";
+      }
+      s << "|" << endl;
+   }
+   
+   return s.str();
+}
