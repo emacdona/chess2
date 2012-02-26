@@ -14,9 +14,11 @@ using namespace std;
 /*
  * 
  */
-int main(int argc, char** argv) {
-   Board board = Board();
+int myMain(int argc, char** argv);
 
+int main(int argc, char** argv) {
+
+   int retVal = myMain(argc, argv);
       
    cout << "Times Square constructor called: "
         << Square::timesConstructorCalled << endl;
@@ -27,6 +29,11 @@ int main(int argc, char** argv) {
    cout << "Times Square destructor called: "
         << Square::timesDestructorCalled << endl;
    
-   return 0;
+   return retVal;
 }
 
+int myMain(int argc, char** argv) {
+   Board board = Board();
+      
+   return 0;
+}
