@@ -34,16 +34,18 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/AsciiRenderable.o \
 	${OBJECTDIR}/Piece.o \
 	${OBJECTDIR}/Rook.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/Knight.o \
 	${OBJECTDIR}/Pawn.o \
 	${OBJECTDIR}/Queen.o \
+	${OBJECTDIR}/AsciiRenderer.o \
 	${OBJECTDIR}/Board.o \
 	${OBJECTDIR}/Bishop.o \
-	${OBJECTDIR}/Square.o \
-	${OBJECTDIR}/King.o
+	${OBJECTDIR}/King.o \
+	${OBJECTDIR}/Square.o
 
 
 # C Compiler Flags
@@ -70,55 +72,65 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/chess2: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/chess2 ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
+${OBJECTDIR}/AsciiRenderable.o: AsciiRenderable.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/AsciiRenderable.o AsciiRenderable.cpp
+
 ${OBJECTDIR}/Piece.o: Piece.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Piece.o Piece.cpp
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/Piece.o Piece.cpp
 
 ${OBJECTDIR}/Rook.o: Rook.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Rook.o Rook.cpp
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/Rook.o Rook.cpp
 
 ${OBJECTDIR}/main.o: main.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
 
 ${OBJECTDIR}/Knight.o: Knight.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Knight.o Knight.cpp
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/Knight.o Knight.cpp
 
 ${OBJECTDIR}/Pawn.o: Pawn.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Pawn.o Pawn.cpp
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/Pawn.o Pawn.cpp
 
 ${OBJECTDIR}/Queen.o: Queen.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Queen.o Queen.cpp
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/Queen.o Queen.cpp
+
+${OBJECTDIR}/AsciiRenderer.o: AsciiRenderer.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/AsciiRenderer.o AsciiRenderer.cpp
 
 ${OBJECTDIR}/Board.o: Board.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Board.o Board.cpp
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/Board.o Board.cpp
 
 ${OBJECTDIR}/Bishop.o: Bishop.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bishop.o Bishop.cpp
-
-${OBJECTDIR}/Square.o: Square.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/Square.o Square.cpp
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bishop.o Bishop.cpp
 
 ${OBJECTDIR}/King.o: King.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
-	$(COMPILE.cc) -g -MMD -MP -MF $@.d -o ${OBJECTDIR}/King.o King.cpp
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/King.o King.cpp
+
+${OBJECTDIR}/Square.o: Square.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -g -I/opt/local/include -MMD -MP -MF $@.d -o ${OBJECTDIR}/Square.o Square.cpp
 
 # Subprojects
 .build-subprojects:

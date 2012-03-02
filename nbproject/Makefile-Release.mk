@@ -34,16 +34,18 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/AsciiRenderable.o \
 	${OBJECTDIR}/Piece.o \
 	${OBJECTDIR}/Rook.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/Knight.o \
 	${OBJECTDIR}/Pawn.o \
 	${OBJECTDIR}/Queen.o \
+	${OBJECTDIR}/AsciiRenderer.o \
 	${OBJECTDIR}/Board.o \
 	${OBJECTDIR}/Bishop.o \
-	${OBJECTDIR}/Square.o \
-	${OBJECTDIR}/King.o
+	${OBJECTDIR}/King.o \
+	${OBJECTDIR}/Square.o
 
 
 # C Compiler Flags
@@ -69,6 +71,11 @@ LDLIBSOPTIONS=
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/chess2: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/chess2 ${OBJECTFILES} ${LDLIBSOPTIONS} 
+
+${OBJECTDIR}/AsciiRenderable.o: AsciiRenderable.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/AsciiRenderable.o AsciiRenderable.cpp
 
 ${OBJECTDIR}/Piece.o: Piece.cpp 
 	${MKDIR} -p ${OBJECTDIR}
@@ -100,6 +107,11 @@ ${OBJECTDIR}/Queen.o: Queen.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Queen.o Queen.cpp
 
+${OBJECTDIR}/AsciiRenderer.o: AsciiRenderer.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/AsciiRenderer.o AsciiRenderer.cpp
+
 ${OBJECTDIR}/Board.o: Board.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
@@ -110,15 +122,15 @@ ${OBJECTDIR}/Bishop.o: Bishop.cpp
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Bishop.o Bishop.cpp
 
-${OBJECTDIR}/Square.o: Square.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Square.o Square.cpp
-
 ${OBJECTDIR}/King.o: King.cpp 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/King.o King.cpp
+
+${OBJECTDIR}/Square.o: Square.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/Square.o Square.cpp
 
 # Subprojects
 .build-subprojects:
