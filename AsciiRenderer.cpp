@@ -59,16 +59,17 @@ string UniformBoxAsciiRenderer::render() {
 
    AsciiRenderableGrid::iterator i;
    AsciiRenderableRow::iterator  j;
+   int l;
 
    int rows, columns;
    vector<string> strings;
    bool rowInProgress = false;
 
-   //for every row
+   //for every row of AsciiRenderables
    for( i = uniformBoxRenderables.begin(); i != uniformBoxRenderables.end(); i++ ) {
       vector<shared_ptr<ostringstream> > stringstreams;
 
-      //for every column (for every renderable square)
+      //for every column (for every AsciiRenderable)
       for( j = i->begin() ; j != i->end(); j++ ) {
          rows     = (*j)->getLinesForAsciiRender().first.first;
          columns  = (*j)->getLinesForAsciiRender().first.second;
@@ -76,27 +77,32 @@ string UniformBoxAsciiRenderer::render() {
 
          //each square has its own rows; create buffers to hold their contents
          if(!rowInProgress) {
-             for(int k = 0; k < rows; k++) {
+             for(int k = 0; k < rows + 1; k++) {
                stringstreams.push_back(make_shared<ostringstream>());
              }
             rowInProgress = true;
          }
 
+         *(stringstreams.at(0)) << string(columns + 3, '_');
+
          //for each row of this renderable square, put its contents in the
          //corresponding buffer
-         for(int l = 0; l < strings.size(); l++) {
-             *(stringstreams.at(l)) << strings.at(l);
+         for(l = 0; l < strings.size(); l++) {
+            *(stringstreams.at(l+1)) << strings.at(l) << " | ";
          }
 	   }
 
       //add all the buffers to the final output
-      for(vector<shared_ptr<ostringstream> >::iterator itr = stringstreams.begin(); itr != stringstreams.end(); itr++ ) {
-          s << (*itr)->str() << endl;
+      for(vector<shared_ptr<ostringstream> >::iterator itr = stringstreams.begin(); 
+          itr != stringstreams.end(); itr++ ) {
+          s << "| " << (*itr)->str() << endl;
       }
       rowInProgress = false;
-
-      //stringstreams out of scope; destructor called; shared_ptrs work their magic
    }
+
+   s << "| " 
+     << string((uniformBoxRenderables.size() + 3) * columns, '_') 
+     << " |" << endl;
 
    return s.str(); 
 }

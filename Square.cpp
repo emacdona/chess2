@@ -70,11 +70,9 @@ string Square::asciiRender() {
 pair<pair<unsigned int, unsigned int>, vector<string> > Square::getLinesForAsciiRender(){
    vector<string> strings;
    ostringstream s;
-   s << "| (" << coordinates.first << ", " << coordinates.second  << ") |";
+   s << "(" << coordinates.first << ", " << coordinates.second  << ")";
 
-   strings.push_back(string(s.str().size(), '*'));
    strings.push_back(s.str());
-   strings.push_back(string(s.str().size(), '*'));
 
    return make_pair<pair<unsigned int, unsigned int> , vector<string> > (
       make_pair<unsigned int, unsigned int>(strings.size(), strings[0].size()), 

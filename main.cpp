@@ -21,6 +21,7 @@ int main(int argc, char** argv) {
 
    int retVal = myMain(argc, argv);
    
+   /*
    cout << "Times Square constructor called: "
         << Square::timesConstructorCalled << endl;
    
@@ -29,6 +30,7 @@ int main(int argc, char** argv) {
    
    cout << "Times Square destructor called: "
         << Square::timesDestructorCalled << endl;
+   */
    
    return retVal;
 }
@@ -36,13 +38,13 @@ int main(int argc, char** argv) {
 int myMain(int argc, char** argv) {
    Board board = Board();
    
-   cout << endl << board.asciiRender() << endl;
+   //cout << endl << board.asciiRender() << endl;
      
-   cout << board.pieces[1][1]->neighbors[S]->coordinates.second << endl;
+   //cout << board.pieces[1][1]->neighbors[S]->coordinates.second << endl;
 
    UniformBoxAsciiRenderer ubar(board.getUniformAsciiRenderableGrid());
 
-   cout << endl << "Rendering:" << endl;
+   //cout << endl << "Rendering:" << endl;
    cout << endl << ubar.render() << endl;
            
    return 0;
