@@ -38,6 +38,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/Piece.o \
 	${OBJECTDIR}/Rook.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/UniformBoxAsciiRenderable.o \
 	${OBJECTDIR}/Knight.o \
 	${OBJECTDIR}/Pawn.o \
 	${OBJECTDIR}/Queen.o \
@@ -91,6 +92,11 @@ ${OBJECTDIR}/main.o: main.cpp
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} $@.d
 	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/main.o main.cpp
+
+${OBJECTDIR}/UniformBoxAsciiRenderable.o: UniformBoxAsciiRenderable.cpp 
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} $@.d
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/UniformBoxAsciiRenderable.o UniformBoxAsciiRenderable.cpp
 
 ${OBJECTDIR}/Knight.o: Knight.cpp 
 	${MKDIR} -p ${OBJECTDIR}

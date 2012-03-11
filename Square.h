@@ -11,15 +11,18 @@
 #include<map>
 #include<utility>
 #include "Piece.h"
+#include "AsciiRenderable.h"
+#include <boost/shared_ptr.hpp>
 
 using namespace std;
+using boost::shared_ptr;
 
 namespace chess {
 namespace board{
 
 enum direction { N, NE, E, SE, S, SW, W, NW };
       
-class Square {
+class Square : public AsciiRenderable {
 public:
    Square();
    Square(unsigned int x, unsigned int y);
@@ -30,13 +33,14 @@ public:
    void setPiece(Piece* p);
    Piece* getPiece();
 
-   map<direction, Square*> neighbors;
+   map<direction, shared_ptr<Square> > neighbors;
    
    static unsigned int timesConstructorCalled;
    static unsigned int timesCopyConstructorCalled;
    static unsigned int timesDestructorCalled;
    
    string asciiRender();
+   pair<pair<unsigned int, unsigned int>, vector<string> > getLinesForAsciiRender();
    
    bool imACopy;
    pair<unsigned int, unsigned int> coordinates;

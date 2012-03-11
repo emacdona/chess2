@@ -47,6 +47,8 @@
     <itemPath>AsciiRenderable.h</itemPath>
     <itemPath>AsciiRenderer.cpp</itemPath>
     <itemPath>AsciiRenderer.h</itemPath>
+    <itemPath>UniformBoxAsciiRenderable.cpp</itemPath>
+    <itemPath>UniformBoxAsciiRenderable.h</itemPath>
   </logicalFolder>
   <projectmakefile>Makefile</projectmakefile>
   <confs>

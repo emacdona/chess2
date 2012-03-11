@@ -8,6 +8,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "Board.h"
+#include "AsciiRenderer.h"
 
 using namespace std;
 
@@ -37,7 +38,12 @@ int myMain(int argc, char** argv) {
    
    cout << endl << board.asciiRender() << endl;
      
-   cout << board.pieces[1][1].neighbors[S]->coordinates.second << endl;
+   cout << board.pieces[1][1]->neighbors[S]->coordinates.second << endl;
+
+   UniformBoxAsciiRenderer ubar(board.getUniformAsciiRenderableGrid());
+
+   cout << endl << "Rendering:" << endl;
+   cout << endl << ubar.render() << endl;
            
    return 0;
 }

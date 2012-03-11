@@ -9,16 +9,16 @@
 #define	ASCIIRENDERER_H
 
 #include "AsciiRenderable.h"
+#include "UniformBoxAsciiRenderable.h"
 #include <vector>
 #include <string>
+#include <boost/shared_ptr.hpp>
 
 using namespace std;
+using boost::shared_ptr;
 
 namespace chess {
 namespace rendering {
-
-typedef vector<vector<AsciiRenderable*> > AsciiRenderableGrid;
-typedef vector<AsciiRenderable*> AsciiRenderableRow;
 
 class UniformBoxAsciiRenderer {
 public:
@@ -27,7 +27,7 @@ public:
    virtual ~UniformBoxAsciiRenderer();
    string render();
 private:
-   AsciiRenderableGrid uniformBoxRenderables;
+   vector<vector<shared_ptr<AsciiRenderable> > > uniformBoxRenderables;
 };
 
 }}

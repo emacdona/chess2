@@ -12,20 +12,25 @@
 #include <string>
 #include "Square.h"
 #include "Piece.h"
+#include <boost/shared_ptr.hpp>
+#include "UniformBoxAsciiRenderable.h"
 
 namespace chess {
 namespace board {
 
 using namespace std;
-class Board {
+using boost::shared_ptr;
+
+class Board : public UniformBoxAsciiRenderable{
 public:
    Board();
    Board(const Board& orig);
    virtual ~Board();
+   AsciiRenderableGrid getUniformAsciiRenderableGrid();
    
    string asciiRender();
    
-   vector<vector<Square> > pieces;
+   vector<vector<shared_ptr<Square> > > pieces;
    
 private:
 
