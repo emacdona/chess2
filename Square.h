@@ -47,6 +47,7 @@ public:
    
 private:
    Piece* piece;
+   string squareCoordinates(shared_ptr<Square> s);
 };
 
 }}

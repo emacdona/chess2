@@ -70,20 +70,38 @@ string Square::asciiRender() {
 pair<pair<unsigned int, unsigned int>, vector<string> > Square::getLinesForAsciiRender(){
    vector<string> strings;
    ostringstream s;
-   s << "------(" << coordinates.first << ", " << coordinates.second  << ")------";
 
-   strings.push_back(string(s.str().size(), '*'));
-   strings.push_back(string(s.str().size(), '*'));
-   strings.push_back(string(s.str().size(), '*'));
-   strings.push_back(string(s.str().size(), '*'));
+   s << squareCoordinates(this->neighbors[NW]) << ' '  
+     << squareCoordinates(this->neighbors[N])  << ' '
+     << squareCoordinates(this->neighbors[NE]);
    strings.push_back(s.str());
-   strings.push_back(string(s.str().size(), '*'));
-   strings.push_back(string(s.str().size(), '*'));
-   strings.push_back(string(s.str().size(), '*'));
-   strings.push_back(string(s.str().size(), '*'));
+   s.clear(); s.str("");
+
+   s << squareCoordinates(this->neighbors[W]) << ' '  
+     << "(" << this->coordinates.first << "," << this->coordinates.second << ") "
+     << squareCoordinates(this->neighbors[E]);
+   strings.push_back(s.str());
+   s.clear(); s.str("");
+
+   s << squareCoordinates(this->neighbors[SW]) << ' '  
+     << squareCoordinates(this->neighbors[S])  << ' '
+     << squareCoordinates(this->neighbors[SE]);
+   strings.push_back(s.str());
+   s.clear(); s.str("");
 
    return make_pair<pair<unsigned int, unsigned int> , vector<string> > (
       make_pair<unsigned int, unsigned int>(strings.size(), strings[0].size()), 
       strings
    );
+}
+
+string Square::squareCoordinates(shared_ptr<Square> s){
+    if(s){
+      ostringstream ss;
+      ss << "(" << s->coordinates.first << "," << s->coordinates.second << ")";
+      return ss.str();
+    }
+    else{
+      return string("(-,-)");
+    }
 }
