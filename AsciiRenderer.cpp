@@ -83,26 +83,37 @@ string UniformBoxAsciiRenderer::render() {
             rowInProgress = true;
          }
 
-         *(stringstreams.at(0)) << string(columns + 3, '_');
+         *(stringstreams.at(0)) << string(columns, '_');
+
+         if( (j+1) != i->end()) {
+            *(stringstreams.at(0)) << string(3, '_');
+         }
 
          //for each row of this renderable square, put its contents in the
          //corresponding buffer
          for(l = 0; l < strings.size(); l++) {
-            *(stringstreams.at(l+1)) << strings.at(l) << " | ";
+            *(stringstreams.at(l+1)) << strings.at(l);
+            if( (j+1) != i->end()) {
+               *(stringstreams.at(l+1)) << " | ";
+            }
          }
 	   }
 
       //add all the buffers to the final output
       for(vector<shared_ptr<ostringstream> >::iterator itr = stringstreams.begin(); 
           itr != stringstreams.end(); itr++ ) {
-          s << "| " << (*itr)->str() << endl;
+          s << "| " << (*itr)->str() << " |" << endl;
       }
       rowInProgress = false;
    }
 
-   s << "| " 
-     << string((uniformBoxRenderables.size() + 3) * columns, '_') 
+   s << "| "    
+                /* width of all columns but one */
+     << string( (columns + 3) * (uniformBoxRenderables.size() - 1) +
+                /* width of last column */
+                columns, '_') 
      << " |" << endl;
+
 
    return s.str(); 
 }
