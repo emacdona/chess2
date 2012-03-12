@@ -78,7 +78,7 @@ pair<pair<unsigned int, unsigned int>, vector<string> > Square::getLinesForAscii
    s.clear(); s.str("");
 
    s << squareCoordinates(this->neighbors[W]) << ' '  
-     << "(" << this->coordinates.first << "," << this->coordinates.second << ") "
+     << "<" << this->coordinates.first << "," << this->coordinates.second << "> "
      << squareCoordinates(this->neighbors[E]);
    strings.push_back(s.str());
    s.clear(); s.str("");
